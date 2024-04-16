@@ -1,0 +1,8 @@
+SSH - auth key based authentication
+~/.ssh/authorized_keys - public key - Server
+
+Server generates a random string and send the key to the client to check whether it has the private key. 
+
+For generating keys: 
+ssh-keygen
+

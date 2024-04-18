@@ -6,3 +6,20 @@ Server generates a random string and send the key to the client to check whether
 For generating keys: 
 ssh-keygen
 
+
+
+Test Docker: 
+Dockerfile building:
+	sudo docker build -t my_ssh_image .
+	sudo docker run -d -p 2222:22 --name my_ssh_container my_ssh_image
+
+	to find the ip: 
+		sudo docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' my_ssh_container
+	
+	to ssh container:
+		ssh root@<ip of the above>
+
+
+With ssh keys:
+
+cat test.pub | ssh root@172.17.0.3 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
